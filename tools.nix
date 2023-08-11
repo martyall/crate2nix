@@ -311,7 +311,7 @@ rec {
             gitSources = packagesByType."git" or [ ];
             gitSourcesUnique = lib.unique gitSources;
             gitSourceConfigs = builtins.map gitSourceConfig gitSourcesUnique;
-            gitSourceConfigsString = lib.concatStrings gitSourceConfigs;
+            gitSourceConfigsString = lib.concatStrings (lib..unique gitSourceConfigs);
           in
           pkgs.writeText
             "vendor-config"
